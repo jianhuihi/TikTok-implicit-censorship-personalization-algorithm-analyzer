@@ -24,7 +24,7 @@ def watch_tiktok(url, se_driver: webdriver, like=False):
     return se_driver.current_url
 
 
-def _wait_tiktok_to_load(se_driver: selenium.webdriver):
+def _wait_tiktok_to_load(se_driver: webdriver):
     page_state = se_driver.execute_script('return document.readyState;')
     while page_state != 'complete':
         time.sleep(0.1)  # 100 ms
