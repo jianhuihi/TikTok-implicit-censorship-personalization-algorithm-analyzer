@@ -1,6 +1,6 @@
 class TikTokNode():
-    def __init__(self, url, subtitles):
-        self.url = url
+    def __init__(self, tiktok, subtitles):
+        self.tiktok = tiktok
         self.subtitles = subtitles
 
 class TikTokGraph():

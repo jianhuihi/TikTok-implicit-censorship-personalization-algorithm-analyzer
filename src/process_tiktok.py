@@ -9,10 +9,11 @@ def _download_tiktok_from_url(url, api, output_fp):
     f = open(output_fp, "wb")
     f.write(video)
     f.close()
+    return tiktok
 
 
 def generate_subtitles(url, api, output_fp):
-    _download_tiktok_from_url(url, api, "temp.mp4")
+    tiktok = _download_tiktok_from_url(url, api, "temp.mp4")
 
     os.system(f'ffmpeg -i temp.mp4 -q:a 0 -map a temp.wav')
     os.system(f'ffmpeg -i temp.wav -ac 1 mono.wav')
@@ -24,7 +25,7 @@ def generate_subtitles(url, api, output_fp):
 
     os.system(f'rm temp.mp4 temp.wav mono.wav')
 
-    return result
+    return result, tiktok
     
     
 
