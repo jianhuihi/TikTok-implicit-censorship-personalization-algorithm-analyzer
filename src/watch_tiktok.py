@@ -32,7 +32,8 @@ def _watch_tiktok(url, se_driver: webdriver, like=False):
     chain = ActionChains(driver=se_driver)
     if like:  # Then maybe interact
         chain.send_keys('L')
-        chain.pause(0.6)
+        random_pause = random.uniform(0, 1) + 0.5  # Add some randomness to avoid bot detection
+        chain.pause(random_pause)
     print("Next...")
     chain.send_keys(Keys.SPACE)
     chain.perform()
