@@ -5,12 +5,14 @@ class TikTokNode():
 
 class TikTokGraph():
     def __init__(self):
-        self.edges = []
+        self.edges = {}
         self.nodes = []
     
     def add_node(self, node: TikTokNode):
         self.nodes.append(node)
+        self.edges[node] = []
 
     def add_edge(self, src: TikTokNode, dst: TikTokNode):
-        self.edges.append([src, dst])
+        self.edges[src].append(dst)
+    
     

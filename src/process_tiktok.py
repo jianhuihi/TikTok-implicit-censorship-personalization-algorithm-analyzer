@@ -12,14 +12,14 @@ def _download_tiktok_from_url(url, api, output_fp):
     return tiktok
 
 
-def generate_subtitles(url, api, output_fp):
+def generate_subtitles(url, api):
     tiktok = _download_tiktok_from_url(url, api, "temp.mp4")
 
     os.system(f'ffmpeg -i temp.mp4 -q:a 0 -map a temp.wav')
     os.system(f'ffmpeg -i temp.wav -ac 1 mono.wav')
     # Sample rate: 44100 Hz, Sample width: s16
     r = sr.Recognizer()
-    with sr.AudioFile(output_fp) as source:
+    with sr.AudioFile("mono.wav") as source:
         audio = r.record(source)
     result = r.recognize_sphinx(audio)
 
